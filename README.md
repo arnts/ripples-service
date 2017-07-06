@@ -29,13 +29,13 @@ Test:
 $ npm run test
 ``` 
 
-Run server in dev mode:
+Start server in dev mode:
 
 ```bash
 $ npm run dev
 ``` 
 
-Verify the serive for example using httpie
+Verify the service, for example using [https://httpie.org/](httpie)
 
 ```bash
 $ http localhost:3000/api/v1/ping
