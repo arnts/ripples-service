@@ -31,7 +31,6 @@ router.get('/ping', function (req, res) {
 router.get('/builds', function (req, res) {
     try {
         buildRoute.getBuilds().then((results) => {
-            console.log("got results " + results);
             res.send(results);
         });
     }
