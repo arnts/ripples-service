@@ -1,6 +1,6 @@
-# A simple service providing build and code stats from VSTS 
+# A simple service providing build and code statistics from VSTS
 
-A simple RESTful Node.js service that integrates with Visual Stusio Team Services (VSTS).
+A service based on Node.js and TypeScript that integrates with Visual Stusio Team Services (VSTS).
 
 ## Want to run this service?
 
@@ -35,7 +35,7 @@ Start server in dev mode:
 $ npm run dev
 ``` 
 
-Verify the service, for example using [https://httpie.org/](httpie)
+Verify the service, for example using [httpie](https://httpie.org/)
 
 ```bash
 $ http localhost:3000/api/v1/ping
