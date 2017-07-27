@@ -27,6 +27,10 @@ export async function getWebApi(): Promise<vm.WebApi> {
     });
 }
 
-export function getProject(): string {
-    return getEnv('API_PROJECT');
+export function getProject(proj: string): string {
+    if (proj) {
+        return proj;
+    } else {
+        return getEnv('API_PROJECT');
+    }
 }

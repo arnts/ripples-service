@@ -1,6 +1,6 @@
-# A simple service providing build and code statistics from VSTS
+# A simple service for build and code statistics from VSTS
 
-A service based on Node.js and TypeScript that integrates with Visual Stusio Team Services (VSTS).
+Integrates with Visual Studio Team Services (VSTS) using vsts-node-api. Written in TypeScript for Node.js.
 
 ## Want to run this service?
 
@@ -44,5 +44,5 @@ $ http localhost:3000/api/v1/ping
 Get 100 latest builds
 
 ```bash
-$ http localhost:3000/api/v1/builds?top=100
+$ http localhost:3000/api/v1/builds top==50
 ``` 

@@ -3,16 +3,25 @@ import * as vm from 'vso-node-api';
 import * as ba from 'vso-node-api/BuildApi';
 import * as bi from 'vso-node-api/interfaces/BuildInterfaces';
 
-export async function getBuilds() {
+export async function getBuilds(project: string, defs: string, top: number = 10) {
     try {
         let vsts: vm.WebApi = await cm.getWebApi();
         let vstsBuild: ba.IBuildApi = vsts.getBuildApi();
-        let project = cm.getProject();
+        let vstsProject = cm.getProject(project);
+        let vstsBuildDefs: number[] = null;
 
+        if (defs) {
+            let strArr: string[] = defs.split(',');
+            vstsBuildDefs = [];
+            for (let i in strArr) {
+                vstsBuildDefs.push(parseInt(strArr[i]));
+            }
+        }
+        
         // get top N completed builds 
         let builds: bi.Build[] = await vstsBuild.getBuilds(
-            project,
-            null,                       // definitions: number[] 
+            vstsProject,
+            vstsBuildDefs,              // definitions: number[] 
             null,                       // queues: number[]
             null,                       // buildNumber
             null,                       // minFinishTime
@@ -24,7 +33,7 @@ export async function getBuilds() {
             null,                       // tagFilters: string[]
             null,                       // properties: string[]
             //bi.DefinitionType.Build,
-            10                          // top: number
+            top                         // top: number
         );
 
         let buildStats: Object[] = [];
@@ -39,6 +48,8 @@ export async function getBuilds() {
                 "finishTime": b.finishTime.toUTCString(),
                 "result": bi.BuildResult[b.result],
                 "url": b.url,
+                "buildDefId": b.definition.id,
+                "buildDefName": b.definition.name,
             })
         });
 

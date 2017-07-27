@@ -30,7 +30,7 @@ router.get('/ping', function (req, res) {
 
 router.get('/builds', function (req, res) {
     try {
-        buildRoute.getBuilds().then((results) => {
+        buildRoute.getBuilds(req.query.project, req.query.defs, req.query.top).then((results) => {
             res.send(results);
         });
     }
