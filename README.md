@@ -1,6 +1,6 @@
 # A simple service for build and code statistics from VSTS
 
-Integrates with Visual Studio Team Services (VSTS) using vsts-node-api, and returns a flat JSON structure. Written in TypeScript for Node.js.
+Provides a super simple REST API for build and code stats by integrating with Visual Studio Team Services (VSTS) using vsts-node-api. Written in TypeScript for Node.js.
 
 ## Want to run this service?
 
