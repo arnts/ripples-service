@@ -41,13 +41,25 @@ Verify the service, for example using [httpie](https://httpie.org/):
 $ http localhost:3000/api/v1/ping
 ``` 
 
-Get top N latest builds
+Get all git repositories with id, name and description:
+
+```bash
+$ http localhost:3000/api/v1/repos
+``` 
+
+Get all git commits for a give repo:
+
+```bash
+$ http localhost:3000/api/v1/commits repo=="MY_REPO_ID"
+``` 
+
+Get top N latest builds:
 
 ```bash
 $ http localhost:3000/api/v1/builds top==50
 ``` 
 
-Or use the browser:
+Or use the browser to test:
 
 ```bash
 http://localhost:3000/api/v1/builds?top=50

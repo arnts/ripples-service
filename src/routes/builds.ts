@@ -19,7 +19,7 @@ export async function getBuilds(project: string, defs: string, top: number = 10)
         }
         
         // get top N completed builds 
-        let builds: bi.Build[] = await vstsBuild.getBuilds(
+        let vstsBuilds: bi.Build[] = await vstsBuild.getBuilds(
             vstsProject,
             vstsBuildDefs,              // definitions: number[] 
             null,                       // queues: number[]
@@ -36,9 +36,9 @@ export async function getBuilds(project: string, defs: string, top: number = 10)
             top                         // top: number
         );
 
-        let buildStats: Object[] = [];
-        builds.forEach((b: bi.Build) => {
-            buildStats.push({
+        let builds: Object[] = [];
+        vstsBuilds.forEach((b: bi.Build) => {
+            builds.push({
                 "id": b.id,
                 "project": b.project.name,
                 "requestedFor": b.requestedFor.uniqueName,
@@ -53,7 +53,7 @@ export async function getBuilds(project: string, defs: string, top: number = 10)
             })
         });
 
-        return buildStats;
+        return builds;
     }
     catch (err) {
         console.error('Error: ' + err.stack);
